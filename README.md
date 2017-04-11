@@ -44,3 +44,5 @@ $ git commit  -m "what I want told to someone" //提交修改
 $ git push  //更新到远程服务器上
 
 $ git rm //移除文件
+
+参考地址：http://www.cnblogs.com/lijiayi/p/githubpages.html
