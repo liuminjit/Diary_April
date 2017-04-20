@@ -47,8 +47,11 @@ $ git rm //移除文件
 
 参考地址：http://www.cnblogs.com/lijiayi/p/githubpages.html
 
-## Diary 【4.19】
+## Diary 【4.18】
+###  JS数组方法汇总 array数组元素的添加和删除
 
+
+## Diary 【4.19】
 ###  js中typeof和instanceof用法区别
 
 typeof和instanceof都可以用来判断变量，它们的用法有很大区别：
