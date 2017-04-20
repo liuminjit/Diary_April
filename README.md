@@ -163,9 +163,7 @@ alert(isArrayFn(arr));// true
 备注. model.rows 只是一个object
 
     if (typeof model.rows === "object" && !(model.rows instanceof Array)){  
-
-// 判断是否是一个object  typeof（对象和数组都是object）  用instanceof排除不是数组
-
+    // 判断是否是一个object  typeof（对象和数组都是object）  用instanceof排除不是数组
     model.rows = [model.rows];   转为数组
     }  
     当 model.rows = {};  //空集合时会报错
@@ -189,10 +187,10 @@ alert(isArrayFn(arr));// true
 JavaScript判断object/json 是否为空，可以使用jQuery的isEmptyObject()方法。
 
     function isEmptyObject(e) {  
-    var t;  
-    for (t in e)  
-        return !1;  
-    return !0  
+        var t;  
+        for (t in e)  
+            return !1;  
+        return !0  
     }  
     console.log($.isEmptyObject({"re": 2}));    //false  
     console.log(isEmptyObject());           //true  
