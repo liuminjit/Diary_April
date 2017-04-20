@@ -171,8 +171,8 @@ alert(isArrayFn(arr));// true
 遍历JS对象属性的方法
 
     if (typeof model.rows === "object" && !(model.rows instanceof Array)){  
-    var hasProp = false;  
-    for (var prop in model.rows){  
+        var hasProp = false;  
+        for (var prop in model.rows){  
             hasProp = true;  
             break;  
         }  
