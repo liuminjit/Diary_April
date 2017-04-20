@@ -163,8 +163,8 @@ alert(isArrayFn(arr));// true
 备注. model.rows 只是一个object
 
     if (typeof model.rows === "object" && !(model.rows instanceof Array)){  
-    // 判断是否是一个object  typeof（对象和数组都是object）  用instanceof排除不是数组
-    model.rows = [model.rows];   转为数组
+        // 判断是否是一个object  typeof（对象和数组都是object）  用instanceof排除不是数组
+        model.rows = [model.rows];   转为数组
     }  
     当 model.rows = {};  //空集合时会报错
 
