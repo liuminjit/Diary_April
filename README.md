@@ -155,3 +155,53 @@ alert(isArrayFn(arr));// true
 
 
 参考网址:http://blog.csdn.net/u014421556/article/details/52083215
+
+## Diary 【4.20】
+
+###  js如何判断一个对象{}是否为空对象，没有任何属性
+
+备注. model.rows 只是一个object
+
+    if (typeof model.rows === "object" && !(model.rows instanceof Array)){  
+
+// 判断是否是一个object  typeof（对象和数组都是object）  用instanceof排除不是数组
+
+    model.rows = [model.rows];   转为数组
+    }  
+    当 model.rows = {};  //空集合时会报错
+
+遍历JS对象属性的方法
+
+    if (typeof model.rows === "object" && !(model.rows instanceof Array)){  
+    var hasProp = false;  
+    for (var prop in model.rows){  
+            hasProp = true;  
+            break;  
+        }  
+        if (hasProp){  
+            model.rows = [model.rows];  
+        }else{  
+            throw "model.rows is empty object";  
+            return false;  
+        }  
+    }  
+
+JavaScript判断object/json 是否为空，可以使用jQuery的isEmptyObject()方法。
+
+    function isEmptyObject(e) {  
+    var t;  
+    for (t in e)  
+        return !1;  
+    return !0  
+    }  
+    console.log($.isEmptyObject({"re": 2}));    //false  
+    console.log(isEmptyObject());           //true  
+    console.log(isEmptyObject({}));         //true  
+    console.log(isEmptyObject(null));       //true  
+    console.log(isEmptyObject(23));         //true  
+    console.log(isEmptyObject({"te": 2}));      //false  
+
+结束语 ：jQuery的isEmptyObject()方法实现的代码即简单又简洁，但最关键的是我们要理解原理。
+
+参考地址：http://blog.csdn.net/testcs_dn/article/details/40431835
+
