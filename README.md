@@ -180,7 +180,7 @@ typeof会返回一个变量的基本类型，只有以下几种：number,boolean
 这个属性在我们使用js系统或者自己创建的对象的时候，会默认的加上，例如：
 
     var arr = [1,2,3];  //创建一个数组对象
-    arr.prototype.constructor = Array;  //这一句是系统默认加上的
+    arr.prototype.constructor = Array;  //这一句是系统默认加上
 
 所以我们就可以这样来判断：
 
