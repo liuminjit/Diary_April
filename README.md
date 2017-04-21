@@ -50,6 +50,79 @@ $ git rm //移除文件
 ## Diary 【4.18】
 ###  JS数组方法汇总 array数组元素的添加和删除
 
+1. pop：删除原数组最后一项，并返回删除元素的值；如果数组为空则返回undefined 
+
+    var a = [1,2,3,4,5]; 
+    var b = a.pop(); //a：[1,2,3,4]   b：5 //不用返回的话直接调用就可以了
+2. shift：删除原数组第一项，并返回删除元素的值；如果数组为空则返回undefined 
+
+    var a = [1,2,3,4,5]; 
+    var b = a.shift(); //a：[2,3,4,5]   b：1 
+3. unshift：将参数添加到原数组开头，并返回数组的长度 
+
+    var a = [1,2,3,4,5]; 
+    var b = a.unshift(-2,-1); //a：[-2,-1,1,2,3,4,5]   b：7 
+注：在IE6.0下测试返回值总为undefined，FF2.0下测试返回值为7，所以这个方法的返回值不可靠，需要用返回值时可用splice代替本方法来使用。 
+
+4. push：将参数添加到原数组末尾，并返回数组的长度 
+    var a = [1,2,3,4,5]; 
+    var b = a.push(6,7); //a：[1,2,3,4,5,6,7]   b：7 
+5. concat：返回一个新数组，是将参数添加到原数组中构成的 
+    var a = [1,2,3,4,5]; 
+    var b = a.concat(6,7); //a：[1,2,3,4,5]   b：[1,2,3,4,5,6,7] 
+6. splice(start,deleteCount,val1,val2,...)：从start位置开始删除deleteCount项，并从该位置起插入val1,val2,... 
+    var a = [1,2,3,4,5]; 
+    var b = a.splice(2,2,7,8,9); //a：[1,2,7,8,9,5]   b：[3,4] 
+    var b = a.splice(0,1); //同shift 
+    a.splice(0,0,-2,-1); var b = a.length; //同unshift 
+    var b = a.splice(a.length-1,1); //同pop 
+    a.splice(a.length,0,6,7); var b = a.length; //同push 
+7. reverse：将数组反序 
+    var a = [1,2,3,4,5]; 
+    var b = a.reverse(); //a：[5,4,3,2,1]   b：[5,4,3,2,1] 
+8. sort(orderfunction)：按指定的参数对数组进行排序 （从小到大）
+    var a = [1,2,3,4,5]; 
+    var b = a.sort(); //a：[1,2,3,4,5]   b：[1,2,3,4,5] 
+9. slice(start,end)：返回从原数组中指定开始下标到结束下标之间的项组成的新数组 
+    var a = [1,2,3,4,5]; 
+    var b = a.slice(2,5); //a：[1,2,3,4,5]   b：[3,4,5] 
+10. join(separator)：将数组的元素组起一个字符串，以separator为分隔符，省略的话则用默认用逗号为分隔符 
+    var a = [1,2,3,4,5]; 
+    var b = a.join("|"); //a：[1,2,3,4,5]   b："1|2|3|4|5"
+
+再给个利用数组模拟javaStringBuffer处理字符串的方法：
+
+    /**
+    * 字符串处理函数
+    */
+    function StringBuffer(){
+        var arr = new Array;
+        this.append = function(str){
+            arr[arr.length] = str; 
+        };
+        this.toString = function(){   
+            return arr.join(""); //把append进来的数组ping成一个字符串
+        };
+    }
+
+今天在应用中突然发现join是一种把数组转换成字符串的好方法，故封装成对象使用了：
+    
+    /**
+    * 把数组转换成特定符号分割的字符串
+    */
+    function arrayToString(arr,separator){
+    if(!separator) separator = "";    //separator为null则默认为空
+        return arr.join(separator); 
+    }
+查找数组包含的字符串
+
+    /**
+    * 查找数组包含的字符串
+    */
+    function arrayFindString(arr,string){
+        var str = arr.join(""); 
+        return str.indexOf(string); 
+    }
 
 ## Diary 【4.19】
 ###  js中typeof和instanceof用法区别
