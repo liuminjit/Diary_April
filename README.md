@@ -50,43 +50,50 @@ $ git rm //移除文件
 ## Diary 【4.18】
 ###  JS数组方法汇总 array数组元素的添加和删除
 
-1. pop：删除原数组最后一项，并返回删除元素的值；如果数组为空则返回undefined 
+pop：删除原数组最后一项，并返回删除元素的值；如果数组为空则返回undefined 
 
     var a = [1,2,3,4,5]; 
     var b = a.pop(); //a：[1,2,3,4]   b：5 //不用返回的话直接调用就可以了
-2. shift：删除原数组第一项，并返回删除元素的值；如果数组为空则返回undefined 
+shift：删除原数组第一项，并返回删除元素的值；如果数组为空则返回undefined 
 
     var a = [1,2,3,4,5]; 
     var b = a.shift(); //a：[2,3,4,5]   b：1 
-3. unshift：将参数添加到原数组开头，并返回数组的长度 
+unshift：将参数添加到原数组开头，并返回数组的长度 
 
     var a = [1,2,3,4,5]; 
     var b = a.unshift(-2,-1); //a：[-2,-1,1,2,3,4,5]   b：7 
 注：在IE6.0下测试返回值总为undefined，FF2.0下测试返回值为7，所以这个方法的返回值不可靠，需要用返回值时可用splice代替本方法来使用。 
 
-4. push：将参数添加到原数组末尾，并返回数组的长度 
+push：将参数添加到原数组末尾，并返回数组的长度 
+
     var a = [1,2,3,4,5]; 
     var b = a.push(6,7); //a：[1,2,3,4,5,6,7]   b：7 
-5. concat：返回一个新数组，是将参数添加到原数组中构成的 
+concat：返回一个新数组，是将参数添加到原数组中构成的 
+
     var a = [1,2,3,4,5]; 
     var b = a.concat(6,7); //a：[1,2,3,4,5]   b：[1,2,3,4,5,6,7] 
-6. splice(start,deleteCount,val1,val2,...)：从start位置开始删除deleteCount项，并从该位置起插入val1,val2,... 
+splice(start,deleteCount,val1,val2,...)：从start位置开始删除deleteCount项，并从该位置起插入val1,val2,... 
+
     var a = [1,2,3,4,5]; 
     var b = a.splice(2,2,7,8,9); //a：[1,2,7,8,9,5]   b：[3,4] 
     var b = a.splice(0,1); //同shift 
     a.splice(0,0,-2,-1); var b = a.length; //同unshift 
     var b = a.splice(a.length-1,1); //同pop 
     a.splice(a.length,0,6,7); var b = a.length; //同push 
-7. reverse：将数组反序 
+reverse：将数组反序 
+
     var a = [1,2,3,4,5]; 
     var b = a.reverse(); //a：[5,4,3,2,1]   b：[5,4,3,2,1] 
-8. sort(orderfunction)：按指定的参数对数组进行排序 （从小到大）
+sort(orderfunction)：按指定的参数对数组进行排序 （从小到大）
+
     var a = [1,2,3,4,5]; 
     var b = a.sort(); //a：[1,2,3,4,5]   b：[1,2,3,4,5] 
-9. slice(start,end)：返回从原数组中指定开始下标到结束下标之间的项组成的新数组 
+slice(start,end)：返回从原数组中指定开始下标到结束下标之间的项组成的新数组 
+
     var a = [1,2,3,4,5]; 
     var b = a.slice(2,5); //a：[1,2,3,4,5]   b：[3,4,5] 
-10. join(separator)：将数组的元素组起一个字符串，以separator为分隔符，省略的话则用默认用逗号为分隔符 
+join(separator)：将数组的元素组起一个字符串，以separator为分隔符，省略的话则用默认用逗号为分隔符 
+
     var a = [1,2,3,4,5]; 
     var b = a.join("|"); //a：[1,2,3,4,5]   b："1|2|3|4|5"
 
@@ -131,55 +138,38 @@ typeof和instanceof都可以用来判断变量，它们的用法有很大区别�
 
 typeof会返回一个变量的基本类型，只有以下几种：number,boolean,string,object,undefined,function；
 
-alert(typeof(1));//number
-
-alert(typeof("abc"));//string
-
-alert(typeof(true));//boolean
-
-alert(typeof(m));//undefined
+    alert(typeof(1));//number
+    alert(typeof("abc"));//string
+    alert(typeof(true));//boolean
+    alert(typeof(m));//undefined
 
 如果我们想要判断一个变量是否存在，可以使用typeof：(不能使用if(a) 若a未声明，则报错)
 
-if(typeof a != 'undefined'){ //变量存在}
-
-instanceof返回的是一个布尔值，如：
-
-var a = {};
-
-alert(a instanceof Object);  //true
-
-var b = [];
-
-alert(b instanceof Array);  //true
+    if(typeof a != 'undefined'){ //变量存在}
+    instanceof返回的是一个布尔值，如：
+    var a = {};
+    alert(a instanceof Object);  //true
+    var b = [];
+    alert(b instanceof Array);  //true
 
 需要注意的是，instanceof只能用来判断对象和函数，不能用来判断字符串和数字等，如：
 
-var b = '123';
-
-alert(b instanceof String);  //false
-
-alert(typeof b);  //string
-
-var c = new String("123");
-
-alert(c instanceof String);  //true
-
-alert(typeof c);  //object
+    var b = '123';
+    alert(b instanceof String);  //false
+    alert(typeof b);  //string
+    var c = new String("123");
+    alert(c instanceof String);  //true
+    alert(typeof c);  //object
 
 另外，用instanceof可以判断变量是否为数组
 
 大家都知道js中可以使用typeof来判断变量的基本类型，如：
 
-alert(typeof '111'); // "string" 
-
-alert(typeof 22); // "number" 
-
-alert(typeof a); // "undefined" 
-
-alert(typeof undefined); // "undefined" 
-
-alert(typeof []); // "object"
+    alert(typeof '111'); // "string" 
+    alert(typeof 22); // "number" 
+    alert(typeof a); // "undefined" 
+    alert(typeof undefined); // "undefined" 
+    alert(typeof []); // "object"
 
 但是这个方法不适用于来判断数组，因为不管是数组还是对象，都会返回object，这就需要我们需求其他的方法。
 
@@ -189,45 +179,34 @@ alert(typeof []); // "object"
 
 这个属性在我们使用js系统或者自己创建的对象的时候，会默认的加上，例如：
 
-var arr = [1,2,3];  //创建一个数组对象
-
-arr.prototype.constructor = Array;  //这一句是系统默认加上的
+    var arr = [1,2,3];  //创建一个数组对象
+    arr.prototype.constructor = Array;  //这一句是系统默认加上的
 
 所以我们就可以这样来判断：
 
-var arr = [1,2,3,1]; 
-
-alert(arr.constructor === Array);   // true
+    var arr = [1,2,3,1]; 
+    alert(arr.constructor === Array);   // true
 
 2、instanceof
 
 instanceof是检测对象的原型链是否指向构造函数的prototype对象的，所以我们也可以用它来判断：
 
-var arr = [1,2,3]; 
-
-alert(arr instanceof Array);   // true
+    var arr = [1,2,3]; 
+    alert(arr instanceof Array);   // true
 
 最后，为了给大家一个结果，现写出一个终极解决方案：
 
 判断数组终极解决方案
 
-var arr = [1,2,3]; 
-
-function isArrayFn(obj){  //封装一个函数
-
-if (typeof Array.isArray === "function") { 
-
-return Array.isArray(obj); //浏览器支持则使用isArray()方法
-
-}else{                     //否则使用toString方法
-
-return Object.prototype.toString.call(obj) === "[object Array]"; 
-
-} 
-
-} 
-
-alert(isArrayFn(arr));// true
+    var arr = [1,2,3]; 
+    function isArrayFn(obj){  //封装一个函数
+    if (typeof Array.isArray === "function") { 
+    return Array.isArray(obj); //浏览器支持则使用isArray()方法
+    }else{                     //否则使用toString方法
+    return Object.prototype.toString.call(obj) === "[object Array]"; 
+    } 
+    } 
+    alert(isArrayFn(arr));// true
 
 
 参考网址:http://blog.csdn.net/u014421556/article/details/52083215
